@@ -2,7 +2,6 @@ package com.epam.cdp.m2.hw2.aggregator;
 
 import java.util.Comparator;
 import java.util.HashSet;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -29,7 +28,7 @@ public class Java8Aggregator implements Aggregator {
   public List<Pair<String, Long>> getMostFrequentWords(List<String> words, long limit) {
     return words.stream().collect(
             Collectors.toMap(Function.identity(), value -> 1L,
-                (k1, k2) -> k1 + 1, LinkedHashMap::new))
+                (k1, k2) -> k1 + 1))
         .entrySet().stream()
         .sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
         .limit(limit)
