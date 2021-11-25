@@ -1,5 +1,6 @@
 package com.epam.cdp.m2.hw2.aggregator;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.function.Function;
@@ -7,6 +8,14 @@ import java.util.stream.Collectors;
 import javafx.util.Pair;
 
 public class Java8ParallelAggregator implements Aggregator {
+
+  private static final Comparator<String> comparator = ((v1, v2) -> {
+    int res = Integer.compare(v1.length(), v2.length());
+    if (res == 0) {
+      return v1.compareTo(v2);
+    }
+    return res;
+  });
 
   @Override
   public int sum(List<Integer> numbers) {
@@ -34,8 +43,7 @@ public class Java8ParallelAggregator implements Aggregator {
         .filter(e -> !set.add(e))
         .collect(Collectors.toSet())
         .stream()
-        .sorted()
-        .sorted((v1, v2) -> Integer.compare(v1.length(), v2.length()))
+        .sorted(comparator)
         .limit(limit)
         .collect(Collectors.toList());
   }
