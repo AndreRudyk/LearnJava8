@@ -38,17 +38,5 @@ public class Java8ParallelAggregator implements Aggregator {
         .sorted((v1, v2) -> Integer.compare(v1.length(), v2.length()))
         .limit(limit)
         .collect(Collectors.toList());
-//        return words.parallelStream().filter(x -> x.length() > 1).map(String::toUpperCase)
-//                .filter(x -> {
-//                    char s1 = x.charAt(0);
-//                    for (int i = 1; i < x.length(); i++) {
-//                        if (s1 != x.charAt(i))
-//                            return true;
-//                    }
-//                    return false;
-//                })
-//                .collect(Collectors.toSet())
-//                .stream().sorted().sorted((o1, o2) -> Integer.compare(o1.length(), o2.length()))
-//                .limit(limit).collect(Collectors.toList());
   }
 }

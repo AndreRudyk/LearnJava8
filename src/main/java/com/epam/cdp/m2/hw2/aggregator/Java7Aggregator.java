@@ -61,9 +61,9 @@ public class Java7Aggregator implements Aggregator {
 
     List<Pair<String, Long>> pairList = new ArrayList<>();
     for (Map.Entry<String, Long> entry : entryList) {
-        if (counter >= limit) {
-            break;
-        }
+      if (counter >= limit) {
+        break;
+      }
       counter++;
       pairList.add(new Pair<>(entry.getKey(), entry.getValue()));
     }
@@ -85,9 +85,9 @@ public class Java7Aggregator implements Aggregator {
     List<String> limitedList = new ArrayList<>();
 
     for (Map.Entry<String, Integer> entry : duplicates) {
-        if (count >= limit) {
-            break;
-        }
+      if (count >= limit) {
+        break;
+      }
       count++;
       limitedList.add(entry.getKey());
     }

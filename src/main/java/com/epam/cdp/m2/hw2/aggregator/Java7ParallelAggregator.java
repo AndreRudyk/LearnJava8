@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;
 import javafx.util.Pair;
@@ -74,9 +72,9 @@ public class Java7ParallelAggregator implements Aggregator {
 
     List<Pair<String, Long>> pairList = new ArrayList<>();
     for (Map.Entry<String, Long> entry : entryList) {
-        if (counter >= limit) {
-            break;
-        }
+      if (counter >= limit) {
+        break;
+      }
       counter++;
       pairList.add(new Pair<>(entry.getKey(), entry.getValue()));
     }
@@ -125,25 +123,25 @@ public class Java7ParallelAggregator implements Aggregator {
     protected Integer compute() {
       int sum = 0;
 
-        if (numbers.isEmpty()) {
-            return 0;
-        } else if (numbers.size() <= ((numbers.size() < numThreads) ? numThreads : threshold)) {
-            for (Integer i : numbers) {
-                sum += i;
-            }
-            return sum;
-
-        } else {
-            int middle = numbers.size() / 2;
-            List<Integer> firstSubList = numbers.subList(0, middle);
-            List<Integer> secondSubList = numbers.subList(middle, numbers.size());
-            SumTask firstTask = new SumTask(firstSubList, threshold);
-            firstTask.fork();
-            SumTask secondTask = new SumTask(secondSubList, threshold);
-            int secondValue = secondTask.compute();
-
-            return firstTask.join() + secondValue;
+      if (numbers.isEmpty()) {
+        return 0;
+      } else if (numbers.size() <= ((numbers.size() < numThreads) ? numThreads : threshold)) {
+        for (Integer i : numbers) {
+          sum += i;
         }
+        return sum;
+
+      } else {
+        int middle = numbers.size() / 2;
+        List<Integer> firstSubList = numbers.subList(0, middle);
+        List<Integer> secondSubList = numbers.subList(middle, numbers.size());
+        SumTask firstTask = new SumTask(firstSubList, threshold);
+        firstTask.fork();
+        SumTask secondTask = new SumTask(secondSubList, threshold);
+        int secondValue = secondTask.compute();
+
+        return firstTask.join() + secondValue;
+      }
     }
   }
 
@@ -195,15 +193,6 @@ public class Java7ParallelAggregator implements Aggregator {
         return getDuplicated();
 
       } else {
-//                int middle = words.size() / 2;
-//                List<String> firstSubList = words.subList(0, middle);
-//                List<String> secondSebList = words.subList(middle, words.size());
-//                DuplicatesTask task1 = new DuplicatesTask(firstSubList, threshold);
-//                DuplicatesTask task2 = new DuplicatesTask(secondSebList, threshold);
-//                task1.fork();
-//
-//                return mergeIntMaps(task1.join(), task2.compute());
-
         Map<String, Boolean> mDuplicatedWords = new HashMap<>();
         List<DuplicatesTask> lstSublists = (List<DuplicatesTask>) divideDuplicatedWordTasks();
         for (DuplicatesTask recursiveTask : lstSublists) {
