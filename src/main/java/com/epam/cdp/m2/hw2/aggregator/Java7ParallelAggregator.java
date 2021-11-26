@@ -182,7 +182,7 @@ public class Java7ParallelAggregator implements Aggregator {
 
       } else {
         Map<String, Boolean> mDuplicatedWords = new HashMap<>();
-        List<DuplicatesTask> lstSublists = (List<DuplicatesTask>) divideDuplicatedWordTasks();
+        List<DuplicatesTask> lstSublists = (List<DuplicatesTask>) divideDuplicatesTasks();
         for (DuplicatesTask recursiveTask : lstSublists) {
           Map<String, Boolean> mDuplicatedWordsTemp = recursiveTask.invoke();
           for (Map.Entry<String, Boolean> entry : mDuplicatedWordsTemp.entrySet()) {
@@ -207,7 +207,7 @@ public class Java7ParallelAggregator implements Aggregator {
       return mDuplicatedWords;
     }
 
-    private Collection<DuplicatesTask> divideDuplicatedWordTasks() {
+    private Collection<DuplicatesTask> divideDuplicatesTasks() {
       List<DuplicatesTask> lstSublists = new ArrayList<>();
       lstSublists.add(new DuplicatesTask(words.subList(0, words.size() / 2), threshold));
       lstSublists.add(new DuplicatesTask(words.subList(words.size() / 2, words.size()), threshold));
