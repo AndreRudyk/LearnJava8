@@ -43,6 +43,7 @@ public class Java8ParallelAggregator implements Aggregator {
         .filter(e -> !set.add(e))
         .collect(Collectors.toSet())
         .stream()
+        .sorted()
         .sorted(comparator)
         .limit(limit)
         .collect(Collectors.toList());
