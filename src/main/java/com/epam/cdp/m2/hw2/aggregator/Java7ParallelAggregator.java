@@ -25,27 +25,15 @@ public class Java7ParallelAggregator implements Aggregator {
     return (long) wordFrequency;
   }
 
-  private static boolean isMapShorter(Map<String, Long> firstMap, Map<String, Long> secondMap) {
-    return firstMap.size() < secondMap.size();
-  }
-
   private static Map<String, Long> mergeMaps(Map<String, Long> firstMap,
       Map<String, Long> secondMap) {
-    Map<String, Long> shorterMap = isMapShorter(firstMap, secondMap) ? firstMap : secondMap;
-    Map<String, Long> baseMap = isMapShorter(firstMap, secondMap) ? secondMap : firstMap;
 
-    for (Map.Entry<String, Long> entry : shorterMap.entrySet()) {
+    for (Map.Entry<String, Long> entry : firstMap.entrySet()) {
       String key = entry.getKey();
       long val = entry.getValue();
-      baseMap.put(key, (baseMap.containsKey(key) ? baseMap.get(key) + val : val));
+      secondMap.put(key, (secondMap.containsKey(key) ? secondMap.get(key) + val : val));
     }
-
-    return baseMap;
-  }
-
-  private static boolean isIntMapShorter(Map<String, Integer> firstMap,
-      Map<String, Integer> secondMap) {
-    return firstMap.size() < secondMap.size();
+    return secondMap;
   }
 
   @Override
