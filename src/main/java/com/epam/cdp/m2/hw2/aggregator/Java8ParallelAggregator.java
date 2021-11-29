@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.groupingBy;
+
 public class Java8ParallelAggregator implements Aggregator {
 
     @Override
@@ -19,7 +21,7 @@ public class Java8ParallelAggregator implements Aggregator {
     @Override
     public List<Pair<String, Long>> getMostFrequentWords(List<String> words, long limit) {
         return words.parallelStream()
-                .collect(Collectors.groupingBy(e -> e, Collectors.counting()))
+                .collect(groupingBy(e -> e, Collectors.counting()))
                 .entrySet().parallelStream()
                 .sorted(Map.Entry.<String, Long>comparingByValue().reversed())
                 .limit(limit)
