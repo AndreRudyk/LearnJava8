@@ -8,7 +8,7 @@ import org.junit.runners.Parameterized;
 @RunWith(Parameterized.class)
 public class Java8ParallelAggregatorSumTest extends JavaAggregatorSumTest {
 
-  public Java8ParallelAggregatorSumTest() {
-    super(new Java8ParallelAggregator());
-  }
+    public Java8ParallelAggregatorSumTest() {
+        super(new Java8ParallelAggregator());
+    }
 }

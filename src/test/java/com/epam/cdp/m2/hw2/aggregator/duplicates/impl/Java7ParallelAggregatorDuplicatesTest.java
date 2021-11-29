@@ -8,7 +8,7 @@ import org.junit.runners.Parameterized;
 @RunWith(Parameterized.class)
 public class Java7ParallelAggregatorDuplicatesTest extends JavaAggregatorDuplicatesTest {
 
-  public Java7ParallelAggregatorDuplicatesTest() {
-    super(new Java7ParallelAggregator());
-  }
+    public Java7ParallelAggregatorDuplicatesTest() {
+        super(new Java7ParallelAggregator());
+    }
 }

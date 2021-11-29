@@ -8,8 +8,8 @@ import org.junit.runners.Parameterized;
 @RunWith(Parameterized.class)
 public class Java8ParallelAggregatorDuplicatesTest extends JavaAggregatorDuplicatesTest {
 
-  public Java8ParallelAggregatorDuplicatesTest() {
-    super(new Java8ParallelAggregator());
-  }
+    public Java8ParallelAggregatorDuplicatesTest() {
+        super(new Java8ParallelAggregator());
+    }
 
 }

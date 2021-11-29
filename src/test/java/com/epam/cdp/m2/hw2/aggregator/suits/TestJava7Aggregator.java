@@ -8,9 +8,9 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-    Java7AggregatorFrequencyTest.class,
-    Java7AggregatorSumTest.class,
-    Java7AggregatorDuplicatesTest.class,
+        Java7AggregatorFrequencyTest.class,
+        Java7AggregatorSumTest.class,
+        Java7AggregatorDuplicatesTest.class,
 })
 public class TestJava7Aggregator {
 

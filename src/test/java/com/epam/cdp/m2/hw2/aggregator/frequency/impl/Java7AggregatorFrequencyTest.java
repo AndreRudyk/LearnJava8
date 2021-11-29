@@ -8,8 +8,8 @@ import org.junit.runners.Parameterized;
 @RunWith(Parameterized.class)
 public class Java7AggregatorFrequencyTest extends JavaAggregatorFrequencyTest {
 
-  public Java7AggregatorFrequencyTest() {
-    super(new Java7Aggregator());
-  }
+    public Java7AggregatorFrequencyTest() {
+        super(new Java7Aggregator());
+    }
 
 }

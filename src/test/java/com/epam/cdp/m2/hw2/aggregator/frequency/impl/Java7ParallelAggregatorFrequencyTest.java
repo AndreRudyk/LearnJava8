@@ -8,7 +8,7 @@ import org.junit.runners.Parameterized;
 @RunWith(Parameterized.class)
 public class Java7ParallelAggregatorFrequencyTest extends JavaAggregatorFrequencyTest {
 
-  public Java7ParallelAggregatorFrequencyTest() {
-    super(new Java7ParallelAggregator());
-  }
+    public Java7ParallelAggregatorFrequencyTest() {
+        super(new Java7ParallelAggregator());
+    }
 }

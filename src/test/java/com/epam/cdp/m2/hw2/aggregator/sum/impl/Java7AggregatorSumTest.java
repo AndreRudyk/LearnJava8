@@ -8,8 +8,8 @@ import org.junit.runners.Parameterized;
 @RunWith(Parameterized.class)
 public class Java7AggregatorSumTest extends JavaAggregatorSumTest {
 
-  public Java7AggregatorSumTest() {
-    super(new Java7Aggregator());
-  }
+    public Java7AggregatorSumTest() {
+        super(new Java7Aggregator());
+    }
 
 }
